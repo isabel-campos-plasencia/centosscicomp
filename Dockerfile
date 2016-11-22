@@ -3,7 +3,7 @@ FROM centos:centos7
 
 ENV OPENMPI_MAIN_V v2.0
 ENV OPENMPI_VERSION openmpi-2.0.1
-ENV OPENMPI_HOME /usr/local/openmpi-2.0.1
+ENV OPENMPI_HOME /usr/local/$OPENMPI_VERSION
 
 RUN yum -y groupinstall "Development Tools"
 
