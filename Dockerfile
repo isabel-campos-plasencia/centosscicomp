@@ -3,10 +3,11 @@ FROM centos:centos7
 
 RUN yum -y groupinstall "Development Tools"
 
-RUN yum install wget
-RUN yum install texlive
-RUN yum install emacs
-RUN yum install gnuplot
+RUN yum -y install \
+    wget \
+    texlive \
+    emacs \
+    gnuplot
 
 # Installing OpenMPI
 
