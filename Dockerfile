@@ -1,6 +1,7 @@
 
 FROM centos:centos7
 
+ENV OPENMPI_VERSION openmpi-2.0.1
 ENV OPENMPI_HOME /usr/local/openmpi-2.0.1
 
 RUN yum -y groupinstall "Development Tools"
@@ -14,15 +15,15 @@ RUN yum -y install \
 # Installing OpenMPI
  
 RUN cd /usr/local/src
-RUN wget https://www.open-mpi.org/software/ompi/v2.0/downloads/openmpi-2.0.1.tar.gz
-RUN tar xzvf openmpi-2.0.1.tar.gz
+RUN wget https://www.open-mpi.org/software/ompi/v2.0/downloads/$OPENMPI_VERSION.tar.gz
+RUN tar xzvf $OPENMPI_VERSION.tar.gz
 RUN cd openmpi-2.0.1
-RUN mkdir -p /usr/local/openmpi-2.0.1
-RUN ./configure --prefix=/usr/local/openmpi-2.0.1 \
+RUN mkdir -p $OPEN_MPI_HOME
+RUN ./configure --prefix=$OPENMPI_HOME \
     make && make install
 
 RUN cd /usr/local
-RUN ln -s openmpi-2.0.1 openmpi
+RUN ln -s $OPENMPI_VERSION openmpi
 
 RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
 RUN echo 'export PATH=$PATH:/usr/local/openmpi/bin' >> /etc/profile.d/scicomp.sh
