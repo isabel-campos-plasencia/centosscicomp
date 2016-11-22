@@ -15,14 +15,18 @@ RUN yum -y install \
 
 # Installing OpenMPI
  
-RUN cd /usr/local/src && mkdir -p $OPENMPI_HOME  \
-    wget https://www.open-mpi.org/software/ompi/$OPENMPI_MAIN_V/downloads/$OPENMPI_VERSION.tar.gz  \
-    tar xzvf $OPENMPI_VERSION.tar.gz
-    
-RUN cd $OPENMPI_VERSION && ./configure --prefix=$OPENMPI_HOME \
-    make && make install
+WORKDIR /usr/local/src
 
-RUN cd /usr/local && ln -s $OPENMPI_VERSION openmpi
+RUN mkdir -p $OPENMPI_HOME  
+RUN wget https://www.open-mpi.org/software/ompi/$OPENMPI_MAIN_V/downloads/$OPENMPI_VERSION.tar.gz
+RUN tar xzvf $OPENMPI_VERSION.tar.gz
+    
+WORKDIR /usr/local/src/$OPENMPI_VERSION    
+RUN ./configure --prefix=$OPENMPI_HOME && make && make install
+
+WORKDIR /usr/local
+
+RUN ln -s $OPENMPI_VERSION openmpi
 
 RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
 RUN echo 'export PATH=$PATH:/usr/local/openmpi/bin' >> /etc/profile.d/scicomp.sh
