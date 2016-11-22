@@ -1,7 +1,7 @@
 
 FROM centos:centos7
 
-RUN yum group install "Development Tools"
+RUN yum -y groupinstall "Development Tools"
 
 RUN yum install wget
 RUN yum install texlive
