@@ -1,12 +1,11 @@
 
 FROM centos:centos7
 
-# In case we want to install openMPI from sources
-#ENV OPENMPI_MAIN_V v2.0
-#ENV OPENMPI_VERSION openmpi-2.0.1
-#ENV OPENMPI_HOME /usr/local/$OPENMPI_VERSION
+# This install compilers, scripters, and related tools
 
 RUN yum -y groupinstall "Development Tools"
+
+# Additional software for Math and MPI support
 
 RUN yum -y install \
     wget \
@@ -18,7 +17,7 @@ RUN yum -y install \
     gmp* \
     openmpi*
 
-# Setting environment
+# Setting some useful environment
 
 RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
 RUN echo 'export PATH=$PATH:/usr/lib64/openmpi/bin:/usr/lib64/openmpi/lib' >> /etc/profile.d/scicomp.sh
@@ -32,7 +31,13 @@ RUN /usr/sbin/useradd developer
 CMD [ "/bin/bash"]
 
 
-# Installing OpenMPI from sources
+# In case we need to install some OpenMPI version from sources
+
+# In case we want to install openMPI from sources
+#ENV OPENMPI_MAIN_V v2.0
+#ENV OPENMPI_VERSION openmpi-2.0.1
+#ENV OPENMPI_HOME /usr/local/$OPENMPI_VERSION
+
 #WORKDIR /usr/local/src
 #RUN mkdir -p $OPENMPI_HOME  
 #RUN wget https://www.open-mpi.org/software/ompi/$OPENMPI_MAIN_V/downloads/$OPENMPI_VERSION.tar.gz
