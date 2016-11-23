@@ -29,7 +29,7 @@ RUN echo 'export MPI_INCLUDE=/usr/include/openmpi-x86_64' >> /etc/profile.d/scic
 
 RUN /usr/sbin/useradd developer
 
-CMD [ "/bin/bash", "/usr/bin/su" developer]
+CMD [ "/bin/bash"]
 
 
 # Installing OpenMPI from sources
