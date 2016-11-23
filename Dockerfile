@@ -18,6 +18,12 @@ RUN yum -y install \
     gmp* \
     openmpi*
 
+RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
+RUN echo 'export PATH=$PATH:/usr/lib64/openmpi/bin' >> /etc/profile.d/scicomp.sh
+RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib' >> /etc/profile.d/scicomp.sh
+
+CMD [ "/bin/bash" ]
+
 # Installing OpenMPI from sources
 #WORKDIR /usr/local/src
 #RUN mkdir -p $OPENMPI_HOME  
@@ -30,7 +36,4 @@ RUN yum -y install \
 #RUN echo 'export PATH=$PATH:/usr/local/openmpi/bin' >> /etc/profile.d/scicomp.sh
 #RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/openmpi/lib' >> /etc/profile.d/scicomp.sh
 
-RUN echo 'export PATH=$PATH:/usr/lib64/openmpi/bin' >> /etc/profile.d/scicomp.sh
-RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib' >> /etc/profile.d/scicomp.sh
-RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
-CMD [ "/bin/bash" ]
+
