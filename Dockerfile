@@ -29,12 +29,15 @@ RUN echo 'export MPI_INCLUDE=/usr/include/openmpi-x86_64' >> /etc/profile.d/scic
 
 RUN /usr/sbin/useradd developer
 
-RUN echo '/****************************************************************************/' > /etc/motd 
-RUN echo '/************ WELCOME TO CENTOS7 SCIENTIFIC COMPUTING CONTAINER *************/' >> /etc/motd 
-RUN echo '                                                                              ' >> /etc/motd 
-RUN echo 'If you use -v to mount local directories, remember to source the environment: ' >> /etc/motd 
-RUN echo 'source /etc/profile.d/scicomp.sh' >> /etc/motd 
-RUN echo '/****************************************************************************/' >> /etc/motd 
+RUN echo '/******************************************************************************/' > /etc/motd 
+RUN echo '/**********   WELCOME TO CENTOS7 SCIENTIFIC COMPUTING CONTAINER   *************/' >> /etc/motd 
+RUN echo '/                                                                              /' >> /etc/motd 
+RUN echo '/ You might need to source the environment depending on the local directories  /' >> /etc/motd 
+RUN echo '/ you mount (-v option) by typing: source /etc/profile.d/scicomp.sh            /' >> /etc/motd 
+RUN echo '/                                                                              /' >> /etc/motd
+RUN echo '/ If you detect problems please send an e-mail to: isabel.campos@csic.es       /' >> /etc/motd
+RUN echo '/                                                                              /' >> /etc/motd
+RUN echo '/******************************************************************************/' >> /etc/motd 
 
 RUN echo '/usr/bin/cat /etc/motd' >> /etc/profile.d/scicomp.sh
 
