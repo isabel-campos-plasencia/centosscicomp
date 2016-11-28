@@ -9,6 +9,7 @@ RUN yum -y groupinstall "Development Tools"
 
 RUN yum -y install \
     wget \
+    tcsh \
     texlive \
     emacs \
     which \
@@ -35,7 +36,7 @@ RUN echo 'If you use -v to mount local directories, remember to source the envir
 RUN echo 'source /etc/profile.d/scicomp.sh' >> /etc/motd 
 RUN echo '/****************************************************************************/' >> /etc/motd 
 
-CMD [ "/bin/bash"]
+CMD ["/usr/bin/cat /etc/motd"]
 
 
 # In case we need to install some OpenMPI version from sources
