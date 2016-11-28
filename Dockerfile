@@ -28,6 +28,13 @@ RUN echo 'export MPI_INCLUDE=/usr/include/openmpi-x86_64' >> /etc/profile.d/scic
 
 RUN /usr/sbin/useradd developer
 
+RUN echo '/****************************************************************************/' > /etc/motd 
+RUN echo '/************ WELCOME TO CENTOS7 SCIENTIFIC COMPUTING CONTAINER *************/' >> /etc/motd 
+RUN echo '                                                                              ' >> /etc/motd 
+RUN echo 'If you use -v to mount local directories, remember to source the environment: ' >> /etc/motd 
+RUN echo 'source /etc/profile.d/scicomp.sh' >> /etc/motd 
+RUN echo '/****************************************************************************/' >> /etc/motd 
+
 CMD [ "/bin/bash"]
 
 
