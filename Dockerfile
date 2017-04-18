@@ -22,6 +22,7 @@ RUN yum -y install \
 # Setting some useful environment
 
 RUN echo 'export GCC=gcc' > /etc/profile.d/scicomp.sh 
+RUN echo 'export TZ=Europe/Rome' >> /etc/profile.d/scicomp.sh
 RUN echo 'export PATH=$PATH:/usr/lib64/openmpi/bin:/usr/lib64/openmpi/lib' >> /etc/profile.d/scicomp.sh
 RUN echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib64/openmpi/lib' >> /etc/profile.d/scicomp.sh
 RUN echo 'export MPI_INCLUDE=/usr/include/openmpi-x86_64' >> /etc/profile.d/scicomp.sh
