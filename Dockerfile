@@ -16,6 +16,7 @@ RUN yum -y install \
     gnuplot \
     gsl* \
     gmp* \
+    mpfr* \
     openmpi*
 
 # Setting some useful environment
