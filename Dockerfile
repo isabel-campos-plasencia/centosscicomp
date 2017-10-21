@@ -11,6 +11,7 @@ RUN yum -y install \
     wget \
     tcsh \
     texlive \
+    texlive-preprint \
     emacs \
     which \
     gnuplot \
