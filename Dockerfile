@@ -1,5 +1,5 @@
 
-FROM centos:centos7
+FROM centos:centos8
 
 # This install compilers, scripters, and related tools
 
@@ -18,7 +18,8 @@ RUN yum -y install \
     gsl* \
     gmp* \
     mpfr* \
-    openmpi*
+    openmpi*\
+    openssl*
 
 # Setting some useful environment
 
